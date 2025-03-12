@@ -25,7 +25,20 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative ;
         }
+            section:hover::after{
+            content: attr(data-hover);
+            position: absolute;
+            top: -1.5em;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0000;
+            color: #fff;
+            padding: 0.5em;
+            border-radius: 4px;
+            white-space: nowrap; 
+            }
         img {
             display: block;
             margin: 0 auto;
@@ -68,5 +81,13 @@
     <footer>
         <p>Wahyu Andika Tristianto 2025</p>
     </footer>
+    <script>
+        //javascripts Hover
+        document.querySelectorAll('section').forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                console.log('Section hovered:', section.querySelector('h2').textContent);
+            });
+        });
+    </script>
 </body>
 </html>
