@@ -18,6 +18,35 @@
             text-align: center;
             padding: 1em 0;
         }
+        .hamburger div{
+            position:absolute;
+            top: 1em;
+            left: 1em;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+        .menu {
+            display: none;
+            position: absolute;
+            top: 3em;
+            left: 1em;
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            border-radius: 4px;
+            z-index: 1;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 0.5em 0;
+        }
         section {
             margin: 2em auto;
             max-width: 600px;
@@ -57,15 +86,25 @@
 <body>
     <header>
         <h1>Tentang Saya</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu">
+            <a href="#profile">Profile</a>
+            <a href="#info">Info</a>
+            <a href="#project">Project</a>
+        </div>
     </header>
-    <section>
+    <section data-hover="Profile" id="profile">
         <img src="Foto CPNS BIRU (1).jpg" alt="Foto">
         <h2>profile</h2>
         <p>Nama Saya Wahyu Andika Tristianto, Saya Berasal Dari Tegal Jawa Tengah, Dan Sekarang Saya Adalah Mahasiswa ULBI Prodi
             D4 Teknik Informatika, Hobi Saya Bersantai, Impian Saya Ingin Menjadi Game Developer/Mod Developer.
         </p>
     </section>
-    <section>
+    <section data-hover="Info" id="info">
         <h2>Pendidikan</h2>
         <p>2010-2016 SDN Bringkang</p>
         <p>2016-2019 SMP Al-Azhar</p>
@@ -73,8 +112,8 @@
         <p>2022-Sekarang Universitas Negeri Surabaya</p>
         <p>2024-Sekarang Universitas Logistic dan Bisnis International</p>
     </section>
-    <section>
-        <h2>More Profile About Me</h2>
+    <section data-hover="Project" id="project">
+        <h2>My Project</h2>
         <p><a href="https://pixai.art/@user-ran78/artworks">PixAI</a></p>
         <p><a href="https://next.nexusmods.com/profile/RanZah?gameId=4272">Nexusmods</a></p>
     </section>
@@ -82,7 +121,13 @@
         <p>Wahyu Andika Tristianto 2025</p>
     </footer>
     <script>
-        //javascripts Hover
+        // JavaScript to toggle menu visibility
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        // JavaScript to log section hover
         document.querySelectorAll('section').forEach(section => {
             section.addEventListener('mouseenter', () => {
                 console.log('Section hovered:', section.querySelector('h2').textContent);
