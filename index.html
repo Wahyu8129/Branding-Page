@@ -4,161 +4,87 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/domyid/tracker@1.0.2/index.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-        }
-
-        /* Hamburger menu styling */
-        .hamburger {
-            position: absolute;
-            top: 1em;
-            left: 1em;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        .hamburger .bar {
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.open .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.open .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.open .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .menu {
-            display: none;
-            position: absolute;
-            top: 3em;
-            left: 1em;
-            background-color: #333;
-            color: #fff;
-            padding: 1em;
-            border-radius: 4px;
-            z-index: 1;
-        }
-
-        .menu a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin: 0.5em 0;
-        }
-
-        section {
-            margin: 2em auto;
-            max-width: 600px;
-            padding: 1em;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        section:hover::after {
-            content: attr(data-hover);
-            position: absolute;
-            top: -1.5em;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #000;
-            color: #fff;
-            padding: 0.5em;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-
-        img {
-            display: block;
-            margin: 0 auto;
-            width: 150px;
-            height: 266px;
-            border-radius: 75%;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1em 0;
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
+    <title>My Mods Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>Tentang Saya</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+<body class="bg-gray-900 text-white">
+    <!-- Slide Menu -->
+    <div id="mySidenav" class="slide-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="hover-banner">
+            <img src="Yu-Gi-Oh-Icon.jpg" alt="Strip Banner" class="w-full mb-4" style="max-width: 1980px; max-height: 1080px;">
         </div>
-        <div class="menu" id="menu">
-            <a href="#profile">Profile</a>
-            <a href="#info">Info</a>
-            <a href="#project">Project</a>
+        <a href="index.html" onclick="returnToHome()">Home</a>
+        <a href="#">Mods</a>
+        <a href="javascript:void(0)" onclick="openProfile()">Profile</a>
+        <a href="javascript:void(0)" onclick="openAbout()">About</a>
+    </div>
+
+    <!-- Profile Hover Menu -->
+    <div id="profileHover" class="profile-hover">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeProfile()">&times;</a>
+        <div class="profile-content">
+            <img src="Centur-ion.png" alt="Profile Icon" class="h-10 mb-4">
+            <p>About Me.<br>Just Have Fun</p>
+        </div>
+    </div>
+
+    <!-- About Hover Menu -->
+    <div id="aboutHover" class="about-hover">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">&times;</a>
+        <div class="about-content">
+            <img src="Yu-Gi-Oh-Icon.jpg" alt="About Banner" class="w-full mb-4" style="max-width: 1980px; max-height: 1080px;">
+            <p>This is My Mods Page. Enjoy!</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="strip-3.png" alt="Menu Icon" class="h-8 mr-4" onclick="openNav()">
+            </div>
+            <div class="flex-grow text-center">
+                <img src="Centur-ion.png" alt="Nexus Mods" class="h-10 inline-block">
+            </div>
         </div>
     </header>
-    <section data-hover="Profile" id="profile">
-        <img src="Foto CPNS BIRU (1).jpg" alt="Foto">
-        <h2>profile</h2>
-        <p>Nama Saya Wahyu Andika Tristianto, Saya Berasal Dari Tegal Jawa Tengah, Dan Sekarang Saya Adalah Mahasiswa ULBI Prodi
-            D4 Teknik Informatika, Hobi Saya Bersantai, Impian Saya Ingin Menjadi Game Developer/Mod Developer.
-        </p>
-    </section>
-    <section data-hover="Info" id="info">
-        <h2>Pendidikan</h2>
-        <p>2010-2016 SDN Bringkang</p>
-        <p>2016-2019 SMP Al-Azhar</p>
-        <p>2019-2022 SMAN 1 Menganti</p>
-        <p>2022-Sekarang Universitas Negeri Surabaya</p>
-        <p>2024-Sekarang Universitas Logistic dan Bisnis International</p>
-    </section>
-    <section data-hover="Project" id="project">
-        <h2>My Project</h2>
-        <p><a href="https://pixai.art/@user-ran78/artworks">PixAI</a></p>
-        <p><a href="https://next.nexusmods.com/profile/RanZah?gameId=4272">Nexusmods</a></p>
-    </section>
-    <footer>
-        <p>Wahyu Andika Tristianto 2025</p>
-    </footer>
-    <script>
-        // JavaScript to toggle menu visibility
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const hamburger = document.querySelector('.hamburger');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-            hamburger.classList.toggle('open');
-        }
 
-        // JavaScript to log section hover
-        document.querySelectorAll('section').forEach(section => {
-            section.addEventListener('mouseenter', () => {
-                console.log('Section hovered:', section.querySelector('h2').textContent);
-            });
-        });
-    </script>
+    <!-- Main Content -->
+    <main class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Welcome to My Project Page</h1>
+        <p class="mb-4">Explore and share mods for Yu-Gi-Oh Master Duel.</p>
+        
+        <!-- Mod List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-gray-800 p-4 rounded shadow">
+                <img src="Centur-Ion Main.png" alt="Centur-Ion and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Centur-Ion and Mics Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Centur-ion and More</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded shadow">
+                <img src="Ragnaraika.png" alt="Ragnaraika Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Ragnaraika Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Centur-ion</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded shadow">
+                <img src="Tenpai.png" alt="Tenpai Dragon and more Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Tenpai Dragon and more Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Tenpai Dragon And More.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-4">
+        <div class="container mx-auto text-center">
+            <img src="Footers.png" alt="Footer Banner" class="w-full mb-4" style="max-width: 1400px; max-height: 400px;">
+            <p>&copy; 2024 My Mods Page. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
