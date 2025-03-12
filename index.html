@@ -20,29 +20,35 @@
             height: 100%;
         }
 
-        /* Mengatur footer agar menutupi seluruh lebar dan tinggi */
+        /* Mengatur container utama */
+        .container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Mengatur konten utama agar fleksibel dan mengisi sisa ruang */
+        main {
+            flex: 1;
+            padding-bottom: 120px; /* Memberikan ruang untuk footer */
+        }
+
+        /* Mengatur footer */
         footer {
-            position: fixed; /* Footer akan tetap di bagian bawah */
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px; /* Sesuaikan tinggi footer sesuai kebutuhan */
             background-color: #1a202c; /* Warna latar belakang footer */
-            z-index: 1000; /* Memastikan footer di atas elemen lain */
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
         /* Mengatur gambar di dalam footer */
         footer img {
+            max-width: 1400px;
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Memastikan gambar menutupi area tanpa distorsi */
+            height: auto;
             opacity: 0.5; /* Membuat gambar sedikit memudar */
-            display: block; /* Menghilangkan ruang tambahan di bawah gambar */
-        }
-
-        /* Tambahkan margin-bottom atau padding-bottom ke elemen main */
-        main {
-            margin-bottom: 120px; /* Sesuaikan dengan tinggi footer */
         }
     </style>
 </head>
@@ -203,11 +209,9 @@
             class="w-full mx-auto" 
             style="
                 max-width: 1400px; 
-                max-height: 100px; 
                 height: auto; 
-                object-fit: cover; 
-                opacity: 0.5; /* Membuat gambar sedikit memudar */
-                display: block; /* Memastikan gambar ditampilkan sebagai blok */
+                opacity: 0.5; 
+                display: block; 
             "
         >
     </footer>
