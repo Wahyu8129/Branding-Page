@@ -6,30 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 1em 0;
         }
-        .hamburger div{
-            position:absolute;
+
+        /* Hamburger menu styling */
+        .hamburger {
+            position: absolute;
             top: 1em;
             left: 1em;
             cursor: pointer;
+            z-index: 2;
         }
-        .hamburger div {
-            width: 25px;
+
+        .hamburger .bar {
+            width: 30px;
             height: 3px;
             background-color: #fff;
             margin: 5px 0;
+            transition: all 0.3s ease;
         }
+
+        .hamburger.open .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.open .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         .menu {
             display: none;
             position: absolute;
@@ -41,12 +60,14 @@
             border-radius: 4px;
             z-index: 1;
         }
+
         .menu a {
             color: #fff;
             text-decoration: none;
             display: block;
             margin: 0.5em 0;
         }
+
         section {
             margin: 2em auto;
             max-width: 600px;
@@ -54,20 +75,22 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative ;
+            position: relative;
         }
-            section:hover::after{
+
+        section:hover::after {
             content: attr(data-hover);
             position: absolute;
             top: -1.5em;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #0000;
+            background-color: #000;
             color: #fff;
             padding: 0.5em;
             border-radius: 4px;
-            white-space: nowrap; 
-            }
+            white-space: nowrap;
+        }
+
         img {
             display: block;
             margin: 0 auto;
@@ -75,6 +98,7 @@
             height: 266px;
             border-radius: 75%;
         }
+
         footer {
             text-align: center;
             padding: 1em 0;
@@ -124,9 +148,11 @@
         // JavaScript to toggle menu visibility
         function toggleMenu() {
             const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            hamburger.classList.toggle('open');
         }
-    
+
         // JavaScript to log section hover
         document.querySelectorAll('section').forEach(section => {
             section.addEventListener('mouseenter', () => {
