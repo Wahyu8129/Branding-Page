@@ -8,6 +8,39 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset margin dan padding untuk semua elemen */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Mengatur body dan html agar footer bisa mentok ke bawah */
+        html, body {
+            height: 100%;
+        }
+
+        /* Mengatur footer agar menutupi seluruh lebar dan tinggi */
+        footer {
+            position: fixed; /* Footer akan tetap di bagian bawah */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; /* Sesuaikan tinggi footer sesuai kebutuhan */
+            background-color: #1a202c; /* Warna latar belakang footer */
+            z-index: 1000; /* Memastikan footer di atas elemen lain */
+        }
+
+        /* Mengatur gambar di dalam footer */
+        footer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Memastikan gambar menutupi area tanpa distorsi */
+            opacity: 0.5; /* Membuat gambar sedikit memudar */
+            display: block; /* Menghilangkan ruang tambahan di bawah gambar */
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Slide Menu -->
@@ -54,7 +87,7 @@
 
     <!-- Main Content -->
     <main class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">Welcome to My Project Page</h1>
+        <h1 class="text-3xl font-bold mb-4">Completed Project</h1>
         <p class="mb-4">Explore and share mods for Yu-Gi-Oh Master Duel.</p>
         
         <!-- Mod List -->
@@ -78,11 +111,20 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-4 mt-4">
-        <div class="container mx-auto text-center">
-            <img src="Footers.png" alt="Footer Banner" class="w-full mb-4" style="max-width: 1400px; max-height: 400px;">
-            <p>&copy; 2024 My Mods Page. All rights reserved.</p>
-        </div>
+    <footer>
+        <img 
+            src="Footers.png" 
+            alt="Footer Banner" 
+            class="w-full mx-auto" 
+            style="
+                max-width: 1400px; 
+                max-height: 100px; 
+                height: auto; 
+                object-fit: cover; 
+                opacity: 0.5; /* Membuat gambar sedikit memudar */
+                display: block; /* Memastikan gambar ditampilkan sebagai blok */
+            "
+        >
     </footer>
 
     <script src="script.js"></script>
