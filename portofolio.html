@@ -225,6 +225,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     homeSection.classList.add('animated');
+                } else {
+                    homeSection.classList.remove('animated');
                 }
             });
         }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
@@ -239,6 +241,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     portfolioSection.classList.add('animated');
+                } else {
+                    portfolioSection.classList.remove('animated');
                 }
             });
         }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
