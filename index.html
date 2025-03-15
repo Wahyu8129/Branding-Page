@@ -4,303 +4,399 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/domyid/tracker@1.0.2/index.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Mods Page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Portofolio Saya</title>
+    <!-- Tambahkan Font Orbitron dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset margin dan padding untuk semua elemen */
-        * {
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #121212;
+            color: #ffffff;
         }
 
-        /* Mengatur body dan html agar footer bisa mentok ke bawah */
-        html, body {
+        header {
+            background-color: #1f1f1f;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ff4081;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        nav ul li a:hover {
+            color: #ff4081;
+        }
+
+        .section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        #home {
+            background-color: #1f1f1f;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 50px;
+            text-align: left;
+        }
+
+        #home .home-content {
+            max-width: 600px;
+        }
+
+        #home .home-content h1,
+        #home .home-content p {
+            font-family: 'Orbitron', sans-serif; /* Gunakan font Orbitron */
+            margin: 0;
+            opacity: 0;
+            overflow: hidden; /* Sembunyikan teks sebelum animasi */
+            white-space: nowrap; /* Mencegah teks melompat ke baris baru */
+            animation: typing 6s steps(40, end) forwards; /* Perlambat animasi */
+        }
+
+        #home .home-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation-delay: 0s; /* Mulai animasi h1 segera */
+        }
+
+        #home .home-content p {
+            font-size: 24px;
+            font-weight: 400;
+            animation-delay: 6s; /* Mulai animasi p setelah h1 selesai */
+        }
+
+        #home .home-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 1s ease, transform 1s ease;
+            cursor: pointer;
+        }
+
+        #home .home-image img {
+            width: 100%;
             height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        /* Mengatur container utama */
-        .container {
-            min-height: 100%;
+        #home.animated .home-image {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Animasi mengeja */
+        @keyframes typing {
+            from {
+                width: 0;
+                opacity: 1;
+            }
+            to {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        /* Overlay untuk zoom */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .overlay.active img {
+            transform: scale(1);
+        }
+
+        #about {
+            background-color: #2c2c2c;
+        }
+
+        #portfolio {
+            background-color: #1f1f1f;
+        }
+
+        #portfolio .portfolio-items {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        #portfolio.animated .portfolio-items {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #contact {
+            background-color: #2c2c2c;
+            font-size: 20px;
+        }
+
+        #contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: #ff4081;
+        }
+
+        .portfolio-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            background-color: #333333;
+            padding: 20px;
+            margin: 10px;
+            width: 200px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .item a {
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        /* Mengatur konten utama agar fleksibel dan mengisi sisa ruang */
-        main {
-            flex: 1;
-            padding-bottom: 120px; /* Memberikan ruang untuk footer */
+        .item:hover .project-icon {
+            transform: scale(1.1);
         }
 
-        /* Mengatur footer */
-        footer {
-            background-color: #1a202c; /* Warna latar belakang footer */
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        .item p {
+            margin: 0;
+            font-size: 16px;
+            color: #ffffff;
         }
 
-        /* Mengatur gambar di dalam footer */
-        footer img {
-            max-width: 1400px;
-            width: 100%;
-            height: auto;
-            opacity: 0.5; /* Membuat gambar sedikit memudar */
-        }
-
-        /* Overlay untuk blur background */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Warna overlay */
-            backdrop-filter: blur(5px); /* Efek blur */
-            z-index: 999; /* Pastikan overlay di atas konten lain */
-            display: none; /* Awalnya disembunyikan */
-        }
-
-        /* Tampilkan overlay saat menu hover terbuka */
-        .overlay.active {
-            display: block;
-        }
-
-        /* Pastikan menu hover memiliki z-index yang lebih tinggi */
-        .slide-menu, .profile-hover, .about-hover {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0; /* Awalnya disembunyikan */
-            overflow-x: hidden;
-            transition: 0.5s;
-            z-index: 1000; /* Pastikan di atas overlay */
+        /* Add this for scroll effect */
+        header.scrolled {
+            background-color: rgba(31, 31, 31, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Overlay untuk blur background -->
-    <div id="overlay" class="overlay hidden"></div>
-
-    <!-- Slide Menu -->
-    <div id="mySidenav" class="slide-menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="hover-banner">
-            <img src="Yu-Gi-Oh-Icon.jpg" alt="Strip Banner" class="w-full mb-4" style="max-width: 1980px; max-height: 1080px;">
-        </div>
-        <a href="index.html" onclick="returnToHome()">Home</a>
-        <a href="#">Mods</a>
-        <a href="javascript:void(0)" onclick="openProfile()">Profile</a>
-        <a href="javascript:void(0)" onclick="openAbout()">About</a>
-    </div>
-
-    <!-- Profile Hover Menu -->
-    <div id="profileHover" class="profile-hover">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeProfile()">&times;</a>
-        <div class="profile-content">
-            <img src="Centur-ion.png" alt="Profile Icon" class="h-10 mb-4">
-            <p>About Me.<br>Just Have Fun</p>
-        </div>
-    </div>
-
-    <!-- About Hover Menu -->
-    <div id="aboutHover" class="about-hover">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">&times;</a>
-        <div class="about-content">
-            <img src="Yu-Gi-Oh-Icon.jpg" alt="About Banner" class="w-full mb-4" style="max-width: 1980px; max-height: 1080px;">
-            <p>This is My Mods Page. Enjoy!</p>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-gray-800 text-white p-4">
-        <div class="container mx-auto flex justify-center items-center">
-            <img src="strip-3.png" alt="Menu Icon" class="h-8 absolute top-0 left-0 m-2" id="strip-left" onclick="openNav()">
-            <img src="Centur-ion.png" alt="Nexus Mods" class="h-10">
-        </div>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">On-Going Project</h1>
-        <p class="mb-4">On Going Mods Project Not Release Yet</p>
-        <!-- On Going Mod List -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- On Going Mod 1 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <img src="Galaxy-Eyes.png" alt="On-Going Galaxy Eyes" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Galaxy Eyes Photon Dragon Alternative(Not Release Yet)</h2>
-                <p class="text-gray-400">Alternative Arts For Galaxy Eyes Photon Dragon</p>
-            </div>
-            <!-- On Going Mod 2 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1878" target="_blank" rel="noopener noreferrer">
-                    <img src="Mulcharmy.png" alt="On-Going " class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Mulcharmy Alternative (On Update)</h2>
-                    <p class="text-gray-400">Alternative Arts For Mulcharmy </p>
+    <section id="home" class="section">
+        <div class="home-content">
+            <h1>Welcome to My World</h1>
+            <p>Welcome to My World, a place where you can find inspiration, creativity, and innovation.</p>
+        </div>
+        <div class="home-image">
+            <img src="Foto Saya.jpg" alt="Foto Saya"> <!-- Ganti dengan URL gambar Anda -->
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Perkenalkan Nama Saya Wahyu Andika Tristianto Mahasiswa D4 Teknik Informatika Universitas Logistic dan Bisnis Internation
+            Saya lahir di Tegal 11 Desember 2003, dan Saya memiliki hobi bermain game, menulis, dan Mengembangkan Mods Yang Spesifik Ke Game Yu-Gi-Oh Master Duel
+        </p>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2>My Project</h2>
+        <div class="portfolio-items">
+            <div class="item">
+                <a href="https://next.nexusmods.com/profile/RanZah/mods?gameId=4272" target="_blank">
+                    <img src="Nexus Icon.png" alt="Proyek 1 Icon" class="project-icon">
+                    <p>Proyek 1</p>
                 </a>
             </div>
-            <!-- On Going Mod 3 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1894" target="_blank" rel="noopener noreferrer">
-                    <img src="Mikanko.png" alt="On-Going " class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Mikanko And Others Alternative (On Update)</h2>
-                    <p class="text-gray-400">Alternative Arts For Mikanko And Others </p>
+            <div class="item">
+                <a href="https://pixai.art/@user-ran78/artworks" target="_blank">
+                    <img src="PixAI.png" alt="Proyek 2 Icon" class="project-icon">
+                    <p>Proyek 2</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://github.com/Wahyu8129" target="_blank">
+                    <img src="github.png" alt="Proyek 3 Icon" class="project-icon">
+                    <p>Proyek 3</p>
                 </a>
             </div>
         </div>
-    </main>
-   
-<main class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">Completed Project</h1>
-    <p class="mb-4">Explore and share mods for Yu-Gi-Oh Master Duel.</p>
-     
-    <!-- Mod List -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Mod 1 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1807" target="_blank" rel="noopener noreferrer">
-                <img src="Centur-Ion Main.png" alt="Centur-Ion and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Centur-Ion and Mics Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Centur-ion and More</p>
-            </a>
-        </div>
-        <!-- Mod 2 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1786" target="_blank" rel="noopener noreferrer">
-                <img src="Ragnaraika.png" alt="Ragnaraika Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Ragnaraika Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Centur-ion</p>
-            </a>
-        </div>
-        <!-- Mod 3 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1787" target="_blank" rel="noopener noreferrer">
-                <img src="Tenpai.png" alt="Tenpai Dragon and more Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Tenpai Dragon and more Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Tenpai Dragon And More.</p>
-            </a>
-        </div>
-        <!-- Mod 4 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1790" target="_blank" rel="noopener noreferrer">
-                <img src="fire-king-main.png" alt="Mod 4" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Fire King Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Fire King</p>
-            </a>
-        </div>
-        <!-- Mod 5 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1793" target="_blank" rel="noopener noreferrer">
-                <img src="Plant.png" alt="Mod 5" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Plant and Mics Alternative Artworks</h2>
-                <p class="text-gray-400">Alternative Arts For Plant and Others</p>
-            </a>
-        </div>
-        <!-- Mod 6 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1794" target="_blank" rel="noopener noreferrer">
-                <img src="lightworn.png" alt="Mod 6" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Lightsworn Alternative Artworks</h2>
-                <p class="text-gray-400">Alternative Arts For Lightsworn</p>
-            </a>
-        </div>
-        <!-- Mod 7 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1800" target="_blank" rel="noopener noreferrer">
-                <img src="rikka-aroma.png" alt="Mod 7" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Aroma and Rikka Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Aroma and Rikka</p>
-            </a>
-        </div>
-        <!-- Mod 8 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1808" target="_blank" rel="noopener noreferrer">
-                <img src="ritualbeast.png" alt="Mod 8" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Ritual Beast and Mics Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts For Ritual Beast and Others</p>
-            </a>
-        </div>
-        <!-- Mod 9 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1811" target="_blank" rel="noopener noreferrer">
-                <img src="cyberse.png" alt="Mod 9" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Cyberse Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts for Cyberse</p>
-            </a>
-        </div>
-        <!-- Mod 10 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1828" target="_blank" rel="noopener noreferrer">
-                <img src="vaalmonica.png" alt="Mod 10" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Vaalmonica Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts for Vaalmonica</p>
-            </a>
-        </div>
-        <!-- Mod 11 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1840" target="_blank" rel="noopener noreferrer">
-                <img src="VV.png" alt="Mod 11" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Voiceless Voice and Mics Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts for Voiceless Voice and Mics</p>
-            </a>
-        </div>
-        <!-- Mod 12 -->
-        <div class="bg-gray-800 p-4 rounded shadow">
-            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1860" target="_blank" rel="noopener noreferrer">
-                <img src="dragoon.png" alt="Mod 12" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Dragoon Pack Alternative Arts</h2>
-                <p class="text-gray-400">Alternative Arts for Dragoon Pack</p>
-            </a>
-        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Kontak</h2>
+        <p>Silakan hubungi saya melalui email: <a href="mailto:dikaoim123@gmail.com">dikaoim123@gmail.com</a></p>
+        <p>Silakan hubungi saya melalui No: <a href="tel:082232023945">0822-3202-3945</a></p>
+    </section>
+
+    <!-- Overlay untuk zoom gambar -->
+    <div class="overlay" id="overlay">
+        <img src="" alt="Zoomed Image" id="zoomed-image">
     </div>
-</main>
 
-    <!-- Footer -->
-    <footer>
-        <img src="Footers.png" alt="Footer Banner" class="w-full mx-auto" style="max-width: 1400px; height: auto; opacity: 0.5; display: block;">
-    </footer>
-    
     <script>
-        // Fungsi untuk membuka menu slide
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("overlay").classList.add("active");
-        }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-        // Fungsi untuk menutup menu slide
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("overlay").classList.remove("active");
-        }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        // Fungsi untuk membuka menu profile
-        function openProfile() {
-            document.getElementById("profileHover").style.width = "250px";
-            document.getElementById("overlay").classList.add("active");
-        }
+        // Add a class to the header when scrolling
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-        // Fungsi untuk menutup menu profile
-        function closeProfile() {
-            document.getElementById("profileHover").style.width = "0";
-            document.getElementById("overlay").classList.remove("active");
-        }
+        // Animasi gambar di section Home saat di-scroll
+        const homeSection = document.getElementById('home');
+        const homeImage = document.querySelector('#home .home-image');
 
-        // Fungsi untuk membuka menu about
-        function openAbout() {
-            document.getElementById("aboutHover").style.width = "250px";
-            document.getElementById("overlay").classList.add("active");
-        }
+        const homeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    homeSection.classList.add('animated');
+                } else {
+                    homeSection.classList.remove('animated');
+                }
+            });
+        }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
 
-        // Fungsi untuk menutup menu about
-        function closeAbout() {
-            document.getElementById("aboutHover").style.width = "0";
-            document.getElementById("overlay").classList.remove("active");
-        }
+        homeObserver.observe(homeSection);
+
+        // Animasi tabel Portofolio saat di-scroll
+        const portfolioSection = document.getElementById('portfolio');
+        const portfolioItems = document.querySelector('#portfolio .portfolio-items');
+
+        const portfolioObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    portfolioSection.classList.add('animated');
+                } else {
+                    portfolioSection.classList.remove('animated');
+                }
+            });
+        }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
+
+        portfolioObserver.observe(portfolioSection);
+
+        // Fungsi untuk zoom gambar di Home
+        const homeImageElement = document.querySelector('#home .home-image img');
+        const overlay = document.getElementById('overlay');
+        const zoomedImage = document.getElementById('zoomed-image');
+
+        homeImageElement.addEventListener('click', function () {
+            zoomedImage.src = this.src; // Set gambar yang akan diperbesar
+            overlay.style.display = 'flex'; // Tampilkan overlay
+            setTimeout(() => {
+                overlay.classList.add('active'); // Tambahkan animasi zoom
+            }, 10);
+        });
+
+        // Fungsi untuk keluar dari mode zoom
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('active'); // Hapus animasi zoom
+                setTimeout(() => {
+                    overlay.style.display = 'none'; // Sembunyikan overlay
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
