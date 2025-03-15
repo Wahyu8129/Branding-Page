@@ -53,7 +53,7 @@
 
         /* Overlay untuk blur background */
         .overlay {
-            position: fixed; /* Tetap di posisi yang sama saat di-scroll */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -69,9 +69,9 @@
             display: block;
         }
 
-        /* Slide Menu */
-        .slide-menu {
-            position: fixed; /* Tetap di posisi yang sama saat di-scroll */
+        /* Pastikan menu hover memiliki z-index yang lebih tinggi */
+        .slide-menu, .profile-hover, .about-hover {
+            position: fixed;
             top: 0;
             left: 0;
             height: 100%;
@@ -79,33 +79,6 @@
             overflow-x: hidden;
             transition: 0.5s;
             z-index: 1000; /* Pastikan di atas overlay */
-            background-color: #1a202c; /* Warna latar belakang menu */
-        }
-
-        /* Profile Hover Menu */
-        .profile-hover {
-            position: fixed; /* Tetap di posisi yang sama saat di-scroll */
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0; /* Awalnya disembunyikan */
-            overflow-x: hidden;
-            transition: 0.5s;
-            z-index: 1000; /* Pastikan di atas overlay */
-            background-color: #1a202c; /* Warna latar belakang menu */
-        }
-
-        /* About Hover Menu */
-        .about-hover {
-            position: fixed; /* Tetap di posisi yang sama saat di-scroll */
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0; /* Awalnya disembunyikan */
-            overflow-x: hidden;
-            transition: 0.5s;
-            z-index: 1000; /* Pastikan di atas overlay */
-            background-color: #1a202c; /* Warna latar belakang menu */
         }
     </style>
 </head>
@@ -119,7 +92,7 @@
         <div class="hover-banner">
             <img src="Yu-Gi-Oh-Icon.jpg" alt="Strip Banner" class="w-full mb-4" style="max-width: 1980px; max-height: 1080px;">
         </div>
-        <a href="index.html" onclick="returnToHome()">Home</a>
+        <a href="inde" onclick="returnToHome()">Home</a>
         <a href="#">Mods</a>
         <a href="javascript:void(0)" onclick="openProfile()">Profile</a>
         <a href="javascript:void(0)" onclick="openAbout()">About</a>
@@ -153,133 +126,139 @@
 
     <!-- Main Content -->
     <main class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">My Projects</h1>
-        <p class="mb-4">Explore and share mods for Yu-Gi-Oh Master Duel.</p>
-
-        <!-- Mod List -->
+        <h1 class="text-3xl font-bold mb-4">On-Going Project</h1>
+        <p class="mb-4">On Going Mods Project Not Release Yet</p>
+        <!-- On Going Mod List -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- On Going Mod 1 -->
             <div class="bg-gray-800 p-4 rounded shadow">
                 <img src="Galaxy-Eyes.png" alt="On-Going Galaxy Eyes" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                <h2 class="text-xl font-bold">Galaxy Eyes Photon Dragon Alternative (Not Release Yet)</h2>
+                <h2 class="text-xl font-bold">Galaxy Eyes Photon Dragon Alternative(Not Release Yet)</h2>
                 <p class="text-gray-400">Alternative Arts For Galaxy Eyes Photon Dragon</p>
             </div>
             <!-- On Going Mod 2 -->
             <div class="bg-gray-800 p-4 rounded shadow">
                 <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1878" target="_blank" rel="noopener noreferrer">
-                    <img src="Mulcharmy.png" alt="On-Going Mulcharmy" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                    <img src="Mulcharmy.png" alt="On-Going " class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
                     <h2 class="text-xl font-bold">Mulcharmy Alternative (On Update)</h2>
-                    <p class="text-gray-400">Alternative Arts For Mulcharmy</p>
+                    <p class="text-gray-400">Alternative Arts For Mulcharmy </p>
                 </a>
             </div>
             <!-- On Going Mod 3 -->
             <div class="bg-gray-800 p-4 rounded shadow">
                 <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1894" target="_blank" rel="noopener noreferrer">
-                    <img src="Mikanko.png" alt="On-Going Mikanko" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                    <img src="Mikanko.png" alt="On-Going " class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
                     <h2 class="text-xl font-bold">Mikanko And Others Alternative (On Update)</h2>
-                    <p class="text-gray-400">Alternative Arts For Mikanko And Others</p>
-                </a>
-            </div>
-
-            <!-- Completed Mods -->
-            <!-- Mod 1 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1807" target="_blank" rel="noopener noreferrer">
-                    <img src="Centur-Ion Main.png" alt="Centur-Ion and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Centur-Ion and Mics Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Centur-ion and More</p>
-                </a>
-            </div>
-            <!-- Mod 2 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1786" target="_blank" rel="noopener noreferrer">
-                    <img src="Ragnaraika.png" alt="Ragnaraika Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Ragnaraika Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Centur-ion</p>
-                </a>
-            </div>
-            <!-- Mod 3 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1787" target="_blank" rel="noopener noreferrer">
-                    <img src="Tenpai.png" alt="Tenpai Dragon and more Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Tenpai Dragon and more Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Tenpai Dragon And More.</p>
-                </a>
-            </div>
-            <!-- Mod 4 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1790" target="_blank" rel="noopener noreferrer">
-                    <img src="fire-king-main.png" alt="Fire King Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Fire King Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Fire King</p>
-                </a>
-            </div>
-            <!-- Mod 5 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1793" target="_blank" rel="noopener noreferrer">
-                    <img src="Plant.png" alt="Plant and Mics Alternative Artworks" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Plant and Mics Alternative Artworks</h2>
-                    <p class="text-gray-400">Alternative Arts For Plant and Others</p>
-                </a>
-            </div>
-            <!-- Mod 6 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1794" target="_blank" rel="noopener noreferrer">
-                    <img src="lightworn.png" alt="Lightsworn Alternative Artworks" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Lightsworn Alternative Artworks</h2>
-                    <p class="text-gray-400">Alternative Arts For Lightsworn</p>
-                </a>
-            </div>
-            <!-- Mod 7 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1800" target="_blank" rel="noopener noreferrer">
-                    <img src="rikka-aroma.png" alt="Aroma and Rikka Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Aroma and Rikka Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Aroma and Rikka</p>
-                </a>
-            </div>
-            <!-- Mod 8 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1808" target="_blank" rel="noopener noreferrer">
-                    <img src="ritualbeast.png" alt="Ritual Beast and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Ritual Beast and Mics Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts For Ritual Beast and Others</p>
-                </a>
-            </div>
-            <!-- Mod 9 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1811" target="_blank" rel="noopener noreferrer">
-                    <img src="cyberse.png" alt="Cyberse Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Cyberse Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts for Cyberse</p>
-                </a>
-            </div>
-            <!-- Mod 10 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1828" target="_blank" rel="noopener noreferrer">
-                    <img src="vaalmonica.png" alt="Vaalmonica Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Vaalmonica Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts for Vaalmonica</p>
-                </a>
-            </div>
-            <!-- Mod 11 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1840" target="_blank" rel="noopener noreferrer">
-                    <img src="VV.png" alt="Voiceless Voice and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Voiceless Voice and Mics Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts for Voiceless Voice and Mics</p>
-                </a>
-            </div>
-            <!-- Mod 12 -->
-            <div class="bg-gray-800 p-4 rounded shadow">
-                <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1860" target="_blank" rel="noopener noreferrer">
-                    <img src="dragoon.png" alt="Dragoon Pack Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
-                    <h2 class="text-xl font-bold">Dragoon Pack Alternative Arts</h2>
-                    <p class="text-gray-400">Alternative Arts for Dragoon Pack</p>
+                    <p class="text-gray-400">Alternative Arts For Mikanko And Others </p>
                 </a>
             </div>
         </div>
     </main>
+   
+<main class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Completed Project</h1>
+    <p class="mb-4">Explore and share mods for Yu-Gi-Oh Master Duel.</p>
+     
+    <!-- Mod List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Mod 1 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1807" target="_blank" rel="noopener noreferrer">
+                <img src="Centur-Ion Main.png" alt="Centur-Ion and Mics Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Centur-Ion and Mics Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Centur-ion and More</p>
+            </a>
+        </div>
+        <!-- Mod 2 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1786" target="_blank" rel="noopener noreferrer">
+                <img src="Ragnaraika.png" alt="Ragnaraika Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Ragnaraika Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Centur-ion</p>
+            </a>
+        </div>
+        <!-- Mod 3 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1787" target="_blank" rel="noopener noreferrer">
+                <img src="Tenpai.png" alt="Tenpai Dragon and more Alternative Arts" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Tenpai Dragon and more Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Tenpai Dragon And More.</p>
+            </a>
+        </div>
+        <!-- Mod 4 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1790" target="_blank" rel="noopener noreferrer">
+                <img src="fire-king-main.png" alt="Mod 4" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Fire King Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Fire King</p>
+            </a>
+        </div>
+        <!-- Mod 5 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1793" target="_blank" rel="noopener noreferrer">
+                <img src="Plant.png" alt="Mod 5" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Plant and Mics Alternative Artworks</h2>
+                <p class="text-gray-400">Alternative Arts For Plant and Others</p>
+            </a>
+        </div>
+        <!-- Mod 6 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1794" target="_blank" rel="noopener noreferrer">
+                <img src="lightworn.png" alt="Mod 6" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Lightsworn Alternative Artworks</h2>
+                <p class="text-gray-400">Alternative Arts For Lightsworn</p>
+            </a>
+        </div>
+        <!-- Mod 7 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1800" target="_blank" rel="noopener noreferrer">
+                <img src="rikka-aroma.png" alt="Mod 7" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Aroma and Rikka Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Aroma and Rikka</p>
+            </a>
+        </div>
+        <!-- Mod 8 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1808" target="_blank" rel="noopener noreferrer">
+                <img src="ritualbeast.png" alt="Mod 8" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Ritual Beast and Mics Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts For Ritual Beast and Others</p>
+            </a>
+        </div>
+        <!-- Mod 9 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1811" target="_blank" rel="noopener noreferrer">
+                <img src="cyberse.png" alt="Mod 9" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Cyberse Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts for Cyberse</p>
+            </a>
+        </div>
+        <!-- Mod 10 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1828" target="_blank" rel="noopener noreferrer">
+                <img src="vaalmonica.png" alt="Mod 10" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Vaalmonica Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts for Vaalmonica</p>
+            </a>
+        </div>
+        <!-- Mod 11 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1840" target="_blank" rel="noopener noreferrer">
+                <img src="VV.png" alt="Mod 11" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Voiceless Voice and Mics Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts for Voiceless Voice and Mics</p>
+            </a>
+        </div>
+        <!-- Mod 12 -->
+        <div class="bg-gray-800 p-4 rounded shadow">
+            <a href="https://www.nexusmods.com/yugiohmasterduel/mods/1860" target="_blank" rel="noopener noreferrer">
+                <img src="dragoon.png" alt="Mod 12" class="mod-img w-full h-auto mb-2" style="max-width: 1980px; max-height: 1080px;">
+                <h2 class="text-xl font-bold">Dragoon Pack Alternative Arts</h2>
+                <p class="text-gray-400">Alternative Arts for Dragoon Pack</p>
+            </a>
+        </div>
+    </div>
+</main>
 
     <!-- Footer -->
     <footer>
