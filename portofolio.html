@@ -91,17 +91,45 @@
             opacity: 0;
             transform: translateX(100%);
             transition: opacity 1s ease, transform 1s ease;
+            cursor: pointer; /* Menunjukkan bahwa gambar bisa diklik */
         }
 
         #home .home-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease; /* Animasi zoom */
         }
 
         #home.animated .home-image {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        /* Overlay untuk zoom */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .overlay.active img {
+            transform: scale(1);
         }
 
         #about {
@@ -186,7 +214,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Tentang Saya</a></li>
-                <li><a href="#Project">Portofolio</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
         </nav>
@@ -195,7 +223,7 @@
     <section id="home" class="section">
         <div class="home-content">
             <h1>Welcome to My World</h1>
-            <p>Welcome to My World , a place where you can find inspiration, creativity, and innovation.</p>
+            <p>Welcome to My World, a place where you can find inspiration, creativity, and innovation.</p>
         </div>
         <div class="home-image">
             <img src="Foto Saya.jpg" alt="Foto Saya"> <!-- Ganti dengan URL gambar Anda -->
@@ -235,6 +263,11 @@
         <h2>Kontak</h2>
         <p>Silakan hubungi saya melalui email: <a href="mailto:email@example.com">email@example.com</a></p>
     </section>
+
+    <!-- Overlay untuk zoom gambar -->
+    <div class="overlay" id="overlay">
+        <img src="" alt="Zoomed Image" id="zoomed-image">
+    </div>
 
     <script>
         // Smooth scrolling for anchor links
@@ -289,6 +322,29 @@
         }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
 
         portfolioObserver.observe(portfolioSection);
+
+        // Fungsi untuk zoom gambar di Home
+        const homeImageElement = document.querySelector('#home .home-image img');
+        const overlay = document.getElementById('overlay');
+        const zoomedImage = document.getElementById('zoomed-image');
+
+        homeImageElement.addEventListener('click', function () {
+            zoomedImage.src = this.src; // Set gambar yang akan diperbesar
+            overlay.style.display = 'flex'; // Tampilkan overlay
+            setTimeout(() => {
+                overlay.classList.add('active'); // Tambahkan animasi zoom
+            }, 10);
+        });
+
+        // Fungsi untuk keluar dari mode zoom
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('active'); // Hapus animasi zoom
+                setTimeout(() => {
+                    overlay.style.display = 'none'; // Sembunyikan overlay
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
