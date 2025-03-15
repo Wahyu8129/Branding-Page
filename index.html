@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Saya</title>
-    <!-- Tambahkan Font Orbitron dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
@@ -88,25 +87,25 @@
 
         #home .home-content h1,
         #home .home-content p {
-            font-family: 'Orbitron', sans-serif; /* Gunakan font Orbitron */
+            font-family: 'Orbitron', sans-serif;
             margin: 0;
             opacity: 0;
-            overflow: hidden; /* Sembunyikan teks sebelum animasi */
-            white-space: nowrap; /* Mencegah teks melompat ke baris baru */
-            animation: typing 6s steps(40, end) forwards; /* Perlambat animasi */
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 6s steps(40, end) forwards;
         }
 
         #home .home-content h1 {
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
-            animation-delay: 0s; /* Mulai animasi h1 segera */
+            animation-delay: 0s;
         }
 
         #home .home-content p {
             font-size: 24px;
             font-weight: 400;
-            animation-delay: 6s; /* Mulai animasi p setelah h1 selesai */
+            animation-delay: 6s;
         }
 
         #home .home-image {
@@ -132,7 +131,6 @@
             transform: translateX(0);
         }
 
-        /* Animasi mengeja */
         @keyframes typing {
             from {
                 width: 0;
@@ -144,7 +142,6 @@
             }
         }
 
-        /* Overlay untuk zoom */
         .overlay {
             display: none;
             position: fixed;
@@ -172,6 +169,38 @@
 
         #about {
             background-color: #2c2c2c;
+        }
+
+        #about .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #about .about-content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #about .check-mods {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            margin-top: 20px;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(30, end) forwards;
+            animation-delay: 2s; /* Mulai animasi setelah teks About selesai */
+        }
+
+        #about .check-mods a {
+            color: #ff4081;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #about .check-mods a:hover {
+            color: #ffffff;
         }
 
         #portfolio {
@@ -250,7 +279,6 @@
             color: #ffffff;
         }
 
-        /* Add this for scroll effect */
         header.scrolled {
             background-color: rgba(31, 31, 31, 0.9);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -272,18 +300,23 @@
     <section id="home" class="section">
         <div class="home-content">
             <h1>Welcome to My World</h1>
-            <p>Welcome to My World, a place where you can find inspiration, creativity, and innovation.</p>
+            <p>Welcome to My Portofolio</p>
         </div>
         <div class="home-image">
-            <img src="Foto Saya.jpg" alt="Foto Saya"> <!-- Ganti dengan URL gambar Anda -->
+            <img src="Foto Saya.jpg" alt="Foto Saya">
         </div>
     </section>
 
     <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>Perkenalkan Nama Saya Wahyu Andika Tristianto Mahasiswa D4 Teknik Informatika Universitas Logistic dan Bisnis Internation
-            Saya lahir di Tegal 11 Desember 2003, dan Saya memiliki hobi bermain game, menulis, dan Mengembangkan Mods Yang Spesifik Ke Game Yu-Gi-Oh Master Duel
-        </p>
+        <div class="about-content">
+            <h2>Know More About Me</h2>
+            <p>Perkenalkan Nama Saya Wahyu Andika Tristianto Mahasiswa D4 Teknik Informatika Universitas Logistic dan Bisnis Internation
+                Saya lahir di Tegal 11 Desember 2003, dan Saya memiliki hobi bermain game, menulis, dan Mengembangkan Mods Yang Spesifik Ke Game Yu-Gi-Oh Master Duel
+            </p>
+            <div class="check-mods">
+                <a href="mod-pages.html">Check Out My Mods</a>
+            </div>
+        </div>
     </section>
 
     <section id="portfolio" class="section">
@@ -316,7 +349,6 @@
         <p>Silakan hubungi saya melalui No: <a href="tel:082232023945">0822-3202-3945</a></p>
     </section>
 
-    <!-- Overlay untuk zoom gambar -->
     <div class="overlay" id="overlay">
         <img src="" alt="Zoomed Image" id="zoomed-image">
     </div>
@@ -355,7 +387,7 @@
                     homeSection.classList.remove('animated');
                 }
             });
-        }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
+        }, { threshold: 0.5 });
 
         homeObserver.observe(homeSection);
 
@@ -371,7 +403,7 @@
                     portfolioSection.classList.remove('animated');
                 }
             });
-        }, { threshold: 0.5 }); // Threshold 0.5 artinya animasi akan dimulai saat 50% elemen terlihat
+        }, { threshold: 0.5 });
 
         portfolioObserver.observe(portfolioSection);
 
@@ -381,19 +413,19 @@
         const zoomedImage = document.getElementById('zoomed-image');
 
         homeImageElement.addEventListener('click', function () {
-            zoomedImage.src = this.src; // Set gambar yang akan diperbesar
-            overlay.style.display = 'flex'; // Tampilkan overlay
+            zoomedImage.src = this.src;
+            overlay.style.display = 'flex';
             setTimeout(() => {
-                overlay.classList.add('active'); // Tambahkan animasi zoom
+                overlay.classList.add('active');
             }, 10);
         });
 
         // Fungsi untuk keluar dari mode zoom
         overlay.addEventListener('click', function (e) {
             if (e.target === overlay) {
-                overlay.classList.remove('active'); // Hapus animasi zoom
+                overlay.classList.remove('active');
                 setTimeout(() => {
-                    overlay.style.display = 'none'; // Sembunyikan overlay
+                    overlay.style.display = 'none';
                 }, 300);
             }
         });
